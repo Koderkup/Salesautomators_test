@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Test</title>
+    <style>
+      .iframe-block {
+        box-shadow: 5px 6px 8px 1px rgba(215, 215, 215, 0.5);
+        display: flex;
+        flex-flow: row wrap;
+        align-items: center;
+        justify-content: space-around;
+        padding: 2%;
+        width: 90%;
+        margin: 50px auto;
+      }
+      .form-section {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: space-around;
+        width: 40%;
+        height: 300px;
+        margin-bottom: 20px;
+        box-shadow: 5px 6px 8px 1px rgba(215, 215, 215, 0.5);
+        padding: 1%;
+        border-radius: 8px;
+      }
+      .form-section h1 {
+        text-align: left;
+        margin-bottom: 10px;
+      }
+      .form-group {
+        margin-bottom: 15px;
+      }
+      .form-label {
+        margin-bottom: 5px;
+        font-size: 1.5rem;
+        font-weight: 700;
+      }
+      .btn-container {
+        width: 100%;
+        padding: 2%;
+        text-align: center;
+      }
+      .btn {
+        background-color: chocolate;
+        border: none;
+        font-size: 1.5rem;
+        color: aliceblue;
+        margin: auto;
+        padding: 1%;
+        border-radius: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <form
+      id="pipedriveForm"
+      width="100%"
+      class="iframe-block input-group mb-3"
+    ></form>
+
+    <script>
+      const form = document.getElementById("pipedriveForm");
+      form.action = "#";
+      form.method = "post";
+      // Create the section elements
+      const clientSectionElement = document.createElement("section");
+      clientSectionElement.classList.add("form-section");
+      clientSectionElement.id = "client-details";
+      clientSectionElement.innerHTML = `<h1>Client details</h3>`;
+
+      const jobSectionElement = document.createElement("section");
+      jobSectionElement.classList.add("form-section");
+      jobSectionElement.id = "job-details";
+      jobSectionElement.innerHTML = "<h1>Job details</h3>";
+
+      const locationSectionElement = document.createElement("section");
+      locationSectionElement.classList.add("form-section");
+      locationSectionElement.id = "service-location";
+      locationSectionElement.innerHTML = "<h1>Service location</h3>";
+
+      const scheduledSectionElement = document.createElement("section");
+      scheduledSectionElement.classList.add("form-section");
+      scheduledSectionElement.id = "scheduled";
+      scheduledSectionElement.innerHTML = "<h1>Scheduled</h3>";
+
+      // Append the section elements to the form
+      form.appendChild(clientSectionElement);
+      form.appendChild(jobSectionElement);
+      form.appendChild(locationSectionElement);
+      form.appendChild(scheduledSectionElement);
+
+      const sections = form.querySelectorAll(".form-section");
+
+      // Function to create input elements
+      function createInput(label, type, id, name, value, ref) {
+        const inputElement = document.createElement("input");
+        inputElement.type = type;
+        inputElement.classList.add("form-control");
+        inputElement.placeholder = label;
+        inputElement.id = id;
+        inputElement.name = name;
+        inputElement.value = value;
+        sections[ref].appendChild(inputElement);
+      }
+
+      // Function to create select elements
+      function createSelect(label, id, name, options, ref) {
+        const labelElement = document.createElement("label");
+        labelElement.htmlFor = id;
+        labelElement.textContent = label + ":";
+        sections[ref].appendChild(labelElement);
+        const selectElement = document.createElement("select");
+        selectElement.id = id;
+        selectElement.name = name;
+        options.forEach((option) => {
+          const optionElement = document.createElement("option");
+          optionElement.value = option;
+          optionElement.text = option;
+          selectElement.appendChild(optionElement);
+        });
+        sections[ref].appendChild(selectElement);
+      }
+
+      // Function to create textarea elements
+      function createTextArea(label, id, name, value, ref) {
+        const labelElement = document.createElement("label");
+        labelElement.htmlFor = id;
+        labelElement.textContent = label + ":";
+        sections[ref].appendChild(labelElement);
+
+        const textAreaElement = document.createElement("textarea");
+        textAreaElement.id = id;
+        textAreaElement.name = name;
+        textAreaElement.value = value;
+        sections[ref].appendChild(textAreaElement);
+      }
+
+      // Create form elements based on your provided data
+      createInput(
+        "First name",
+        "text",
+        "229f76c645704729ddeb5f0a69d88e68d80fcecb",
+        "229f76c645704729ddeb5f0a69d88e68d80fcecb",
+        "",
+        0
+      );
+      createInput(
+        "Last name",
+        "text",
+        "768e871aa0835b39cc572b93ba4277841e99e3e8",
+        "768e871aa0835b39cc572b93ba4277841e99e3e8",
+        "",
+        0
+      );
+      createInput(
+        "Phone",
+        "number",
+        "0b7d96c1e8dc751d7385d389e462f8859f7f3698",
+        "0b7d96c1e8dc751d7385d389e462f8859f7f3698",
+        "",
+        0
+      );
+      createInput(
+        "Email",
+        "email",
+        "4a486cae7c9a37ec3a3e96067e8385bf9de07bec",
+        "4a486cae7c9a37ec3a3e96067e8385bf9de07bec",
+        "",
+        0
+      );
+      createSelect(
+        "Job type",
+        "8635d04cfae864fd39f042312e42cf67f2f0d034",
+        "8635d04cfae864fd39f042312e42cf67f2f0d034",
+        ["Recall job"],
+        1
+      );
+      createSelect(
+        "Job source",
+        "b2723b12232617aa7dd752ead99df1f761412791",
+        "b2723b12232617aa7dd752ead99df1f761412791",
+        ["CL Pinellas"],
+        1
+      );
+      createTextArea(
+        "Job description",
+        "e8aed028eac122a90733fbf05dd29c69fa3c00fd",
+        "e8aed028eac122a90733fbf05dd29c69fa3c00fd",
+        "",
+        1
+      );
+      createInput(
+        "Adress",
+        "text",
+        "56a0cf963c574b9eca2351e1ccbc776874e0f7a1",
+        "56a0cf963c574b9eca2351e1ccbc776874e0f7a1",
+        "",
+        2
+      );
+      createInput(
+        "City",
+        "text",
+        "7de70ab7148883a6b83de3338c8621db41e743c4",
+        "7de70ab7148883a6b83de3338c8621db41e743c4",
+        "",
+        2
+      );
+      createInput(
+        "State",
+        "text",
+        "9fe8634ee1942a0f55873fb7fecdd84f43caf238",
+        "9fe8634ee1942a0f55873fb7fecdd84f43caf238",
+        "",
+        2
+      );
+      createInput(
+        "Zip code",
+        "number",
+        "6c63bf231e410df7a371cf2ff320e089f65909a1",
+        "6c63bf231e410df7a371cf2ff320e089f65909a1",
+        "",
+        2
+      );
+      createSelect(
+        "Area",
+        "672364c28bccfcadefd332adf224405cfbfc7c27",
+        "672364c28bccfcadefd332adf224405cfbfc7c27",
+        ["Tampa"],
+        2
+      );
+      createInput(
+        "Start date",
+        "date",
+        "7c26ca716f9cdf50342381f9e018d47e12a97891",
+        "7c26ca716f9cdf50342381f9e018d47e12a97891",
+        "",
+        3
+      );
+      createInput(
+        "Start time",
+        "time",
+        "3f50b88063605c61f5d77b7d67e916caf8d55e13",
+        "3f50b88063605c61f5d77b7d67e916caf8d55e13",
+        "",
+        3
+      );
+      createInput(
+        "End time",
+        "time",
+        "86e06be553f5de8b361cc456b4c3a8169102b3a1",
+        "86e06be553f5de8b361cc456b4c3a8169102b3a1",
+        "",
+        3
+      );
+      createInput(
+        "Test select",
+        "text",
+        "8c7e3de57b9616bd6c4da2db5872e01c617f3b63",
+        "8c7e3de57b9616bd6c4da2db5872e01c617f3b63",
+        "",
+        3
+      );
+      const btnContainer = document.createElement("div");
+      btnContainer.classList.add("btn-container");
+      form.appendChild(btnContainer);
+      const submitButton = document.createElement("input");
+      submitButton.type = "submit";
+      submitButton.value = "Create job";
+      submitButton.classList.add("btn");
+      btnContainer.appendChild(submitButton);
+
+      form.addEventListener("submit", (event) => {
+        event.preventDefault();
+
+        const formData = new FormData(form);
+        const data = {
+          title: `Test_${new Date().getTime()}`,
+          value: 10000,
+          currency: "USD",
+          user_id: null,
+          person_id: 1,
+          org_id: 1,
+          stage_id: 1,
+          status: "open",
+          expected_close_date: "2024-09-10",
+          probability: 60,
+          lost_reason: null,
+          visible_to: 1,
+          add_time: "2024-07-16",
+        };
+        for (const [key, value] of formData.entries()) {
+          data[key] = value;
+        }
+
+        const apiToken = "f13387ae3b98bceac8c4617dfeb45b4692b6d704";
+        const apiUrl = `https://koderkup-sandbox.pipedrive.com/api/v1/deals?api_token=${apiToken}`;
+
+        fetch(apiUrl, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        })
+          .then((response) => {
+            if (response.ok) {
+              return response.json();
+            } else {
+              throw new Error("Failed to create deal");
+            }
+          })
+          .then((data) => {
+            alert("Deal created");
+            console.log("Deal created:", data);
+          })
+          .catch((error) => {
+            console.error("Error creating deal:", error);
+          });
+      });
+    </script>
+  </body>
+</html>
