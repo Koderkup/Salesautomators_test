@@ -5,6 +5,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Test</title>
     <style>
+      #scheduled > *:nth-child(2)::-webkit-calendar-picker-indicator {
+        background-color: transparent;
+        border: none;
+        padding: 0;
+        margin: 0;
+        width: 34px;
+        height: 34px;
+        background-image: url("./calendar.svg");
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        cursor: pointer;
+      }
+
+      #scheduled > *:nth-child(3)::-webkit-calendar-picker-indicator,
+      #scheduled > *:nth-child(4)::-webkit-calendar-picker-indicator {
+        background-color: transparent;
+        border: none;
+        padding: 0;
+        margin: 0;
+        width: 34px;
+        height: 34px;
+        background-image: url("./clock.svg");
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        cursor: pointer;
+      }
+
       .iframe-block {
         box-shadow: 5px 6px 8px 1px rgba(215, 215, 215, 0.5);
         display: flex;
@@ -34,6 +63,7 @@
         margin-bottom: 10px;
         width: 100%;
       }
+
       .input-control {
         width: 94.5%;
         height: 50px;
@@ -113,6 +143,7 @@
         flex-basis: 49%;
         box-sizing: border-box;
       }
+
       @media screen and (max-width: 860px) {
         .iframe-block {
           flex-direction: column;
@@ -199,9 +230,9 @@
           }
           selectElement.appendChild(optionElement);
         });
-        const image = document.createElement('img');
-        image.src = './icon-arrow.svg';
-        image.alt = 'arrow';
+        const image = document.createElement("img");
+        image.src = "./icon-arrow.svg";
+        image.alt = "arrow";
         spanWrapper.appendChild(selectElement);
         spanWrapper.appendChild(image);
         sections[ref].appendChild(spanWrapper);
