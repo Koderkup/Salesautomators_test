@@ -143,6 +143,39 @@
         flex-basis: 49%;
         box-sizing: border-box;
       }
+      .date-input {
+        position: relative;
+      }
+
+      .date-input::before {
+        position: absolute;
+        color: #999;
+        content: attr(placeholder);
+        top: 30%;
+        left: 6px;
+        width: 70%;
+        background-color: white;
+      }
+
+      .time-input {
+        position: relative;
+        white-space: nowrap;
+      }
+     
+      .time-input::before {
+        position: absolute;
+        color: #999;
+        content: attr(placeholder);
+        top: 30%;
+        left: 6px;
+        width: 150px;
+        max-height: 16px;
+        background-color: white;
+        white-space: nowrap !important;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+      }
 
       @media screen and (max-width: 860px) {
         .iframe-block {
@@ -156,19 +189,6 @@
         .form-section {
           width: 80%;
         }
-      }
-      .date-input {
-        position: relative;
-      }
-
-      .date-input::before {
-        position: absolute;
-        color: #999;
-        content: attr(placeholder);
-        top: 30%;
-        left: 6px;
-        width: 30%;
-        background-color: white;
       }
     </style>
   </head>
@@ -224,6 +244,9 @@
         inputElement.required = true;
         if (type === "date") {
           inputElement.classList.add("date-input");
+        }
+        if (type === "time") {
+          inputElement.classList.add("time-input");
         }
         sections[ref].appendChild(inputElement);
       }
@@ -447,21 +470,39 @@
             console.error("Error creating deal:", error);
           });
       });
+
       const dateInput = document.querySelector('input[type="date"]');
-      const handleDateInputRemover = ()=>{
-        dateInput.classList.remove('date-input');
-      }
+      const handleDateInputRemover = () => {
+        dateInput.classList.remove("date-input");
+      };
       dateInput.addEventListener("click", handleDateInputRemover);
       dateInput.addEventListener("blur", handleDateInputChange);
-      
+
       function handleDateInputChange() {
         const dateInput = document.querySelector('input[type="date"]');
         if (dateInput.value !== "") {
-          dateInput.classList.remove('date-input');
+          dateInput.classList.remove("date-input");
         } else {
-          dateInput.classList.add('date-input');
+          dateInput.classList.add("date-input");
         }
       }
+
+      function handleTimeInputRemover() {
+        this.classList.remove("time-input");
+      }
+
+      function handleTimeInputChange() {
+        if (this.value !== "") {
+          this.classList.remove("date-input");
+        } else {
+          this.classList.add("date-input");
+        }
+      }
+      const timeInputs = document.querySelectorAll('input[type="time"]');
+      timeInputs.forEach((input) => {
+        input.addEventListener("click", handleTimeInputRemover);
+        input.addEventListener("blur", handleTimeInputChange);
+      });
     </script>
   </body>
 </html>
