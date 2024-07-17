@@ -157,6 +157,19 @@
           width: 80%;
         }
       }
+      .date-input {
+        position: relative;
+      }
+
+      .date-input::before {
+        position: absolute;
+        color: #999;
+        content: attr(placeholder);
+        top: 30%;
+        left: 6px;
+        width: 30%;
+        background-color: white;
+      }
     </style>
   </head>
   <body>
@@ -209,6 +222,9 @@
         inputElement.name = name;
         inputElement.value = value;
         inputElement.required = true;
+        if (type === "date") {
+          inputElement.classList.add("date-input");
+        }
         sections[ref].appendChild(inputElement);
       }
 
@@ -431,6 +447,21 @@
             console.error("Error creating deal:", error);
           });
       });
+      const dateInput = document.querySelector('input[type="date"]');
+      const handleDateInputRemover = ()=>{
+        dateInput.classList.remove('date-input');
+      }
+      dateInput.addEventListener("click", handleDateInputRemover);
+      dateInput.addEventListener("blur", handleDateInputChange);
+      
+      function handleDateInputChange() {
+        const dateInput = document.querySelector('input[type="date"]');
+        if (dateInput.value !== "") {
+          dateInput.classList.remove('date-input');
+        } else {
+          dateInput.classList.add('date-input');
+        }
+      }
     </script>
   </body>
 </html>
