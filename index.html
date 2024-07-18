@@ -161,7 +161,7 @@
         position: relative;
         white-space: nowrap;
       }
-     
+
       .time-input::before {
         position: absolute;
         color: #999;
@@ -176,7 +176,10 @@
         flex-direction: row;
         flex-wrap: nowrap;
       }
-
+      .video-container {
+        display: flex;
+        justify-content: center;
+      }
       @media screen and (max-width: 860px) {
         .iframe-block {
           flex-direction: column;
@@ -207,22 +210,22 @@
       const clientSectionElement = document.createElement("section");
       clientSectionElement.classList.add("form-section");
       clientSectionElement.id = "client-details";
-      clientSectionElement.innerHTML = `<h1>Client details</h3>`;
+      clientSectionElement.innerHTML = `<h1>Client details</h1>`;
 
       const jobSectionElement = document.createElement("section");
       jobSectionElement.classList.add("form-section");
       jobSectionElement.id = "job-details";
-      jobSectionElement.innerHTML = "<h1>Job details</h3>";
+      jobSectionElement.innerHTML = "<h1>Job details</h1>";
 
       const locationSectionElement = document.createElement("section");
       locationSectionElement.classList.add("form-section");
       locationSectionElement.id = "service-location";
-      locationSectionElement.innerHTML = "<h1>Service location</h3>";
+      locationSectionElement.innerHTML = "<h1>Service location</h1>";
 
       const scheduledSectionElement = document.createElement("section");
       scheduledSectionElement.classList.add("form-section");
       scheduledSectionElement.id = "scheduled";
-      scheduledSectionElement.innerHTML = "<h1>Scheduled</h3>";
+      scheduledSectionElement.innerHTML = "<h1>Scheduled</h1>";
 
       // Append the section elements to the form
       form.appendChild(clientSectionElement);
@@ -504,5 +507,17 @@
         input.addEventListener("blur", handleTimeInputChange);
       });
     </script>
+    <div class="video-container">
+      <iframe
+        width="560"
+        height="315"
+        src="https://www.youtube.com/embed/5BA8r-HqhKE?si=fKM2jP9Z_8j892et"
+        title="YouTube video player"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerpolicy="strict-origin-when-cross-origin"
+        allowfullscreen
+      ></iframe>
+    </div>
   </body>
 </html>
